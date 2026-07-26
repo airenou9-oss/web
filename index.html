@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simplex</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:
+    radial-gradient(circle at top left,#ffd8ee 0%,transparent 35%),
+    radial-gradient(circle at bottom right,#d7f0ff 0%,transparent 35%),
+    linear-gradient(135deg,#fff5fb,#f7faff,#fffefc);
+    overflow-x:hidden;
+}
+
+/* floating circles */
+
+.circle{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(10px);
+    opacity:.45;
+    animation:float 8s ease-in-out infinite;
+}
+
+.c1{
+    width:220px;
+    height:220px;
+    background:#ffc5df;
+    top:-60px;
+    left:-70px;
+}
+
+.c2{
+    width:180px;
+    height:180px;
+    background:#cfe7ff;
+    right:-50px;
+    bottom:-40px;
+    animation-delay:2s;
+}
+
+.c3{
+    width:120px;
+    height:120px;
+    background:#f6d7ff;
+    top:70%;
+    left:12%;
+    animation-delay:4s;
+}
+
+@keyframes float{
+
+0%,100%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-20px);
+}
+
+}
+
+nav{
+
+width:90%;
+margin:auto;
+padding:28px 0;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+}
+
+.logo{
+
+font-size:28px;
+font-weight:700;
+color:#ff5e9c;
+
+letter-spacing:1px;
+
+}
+
+nav ul{
+
+display:flex;
+list-style:none;
+gap:28px;
+
+}
+
+nav a{
+
+text-decoration:none;
+color:#555;
+font-weight:500;
+transition:.3s;
+
+}
+
+nav a:hover{
+
+color:#ff5e9c;
+
+}
+
+.hero{
+
+width:90%;
+margin:auto;
+margin-top:60px;
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+align-items:center;
+gap:50px;
+
+}
+
+.text h1{
+
+font-size:55px;
+line-height:1.1;
+color:#333;
+
+}
+
+.text h1 span{
+
+color:#ff5e9c;
+
+}
+
+.text p{
+
+margin:25px 0;
+color:#666;
+line-height:1.8;
+
+}
+
+.btns{
+
+display:flex;
+gap:18px;
+flex-wrap:wrap;
+
+}
+
+button{
+
+padding:15px 35px;
+border:none;
+border-radius:999px;
+font-size:15px;
+cursor:pointer;
+transition:.35s;
+
+}
+
+.primary{
+
+background:linear-gradient(135deg,#ff76b2,#ff97b5);
+color:white;
+box-shadow:0 10px 25px rgba(255,118,178,.35);
+
+}
+
+.primary:hover{
+
+transform:translateY(-4px);
+
+}
+
+.secondary{
+
+background:white;
+color:#ff5e9c;
+border:2px solid #ffd4e6;
+
+}
+
+.secondary:hover{
+
+background:#fff0f6;
+
+}
+
+.card{
+
+backdrop-filter:blur(25px);
+background:rgba(255,255,255,.55);
+border:1px solid rgba(255,255,255,.7);
+
+border-radius:30px;
+
+padding:35px;
+
+box-shadow:0 15px 40px rgba(0,0,0,.08);
+
+}
+
+.mockup{
+
+height:430px;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+}
+
+.phone{
+
+width:250px;
+height:450px;
+
+background:white;
+
+border-radius:40px;
+
+padding:18px;
+
+box-shadow:0 25px 50px rgba(0,0,0,.12);
+
+transform:rotate(-6deg);
+
+}
+
+.screen{
+
+height:100%;
+border-radius:28px;
+
+background:linear-gradient(160deg,#ffd5ea,#fff,#d7f3ff);
+
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+
+}
+
+.screen h2{
+
+font-size:34px;
+color:#ff5e9c;
+
+}
+
+.screen p{
+
+margin-top:12px;
+color:#666;
+
+}
+
+.features{
+
+width:90%;
+margin:90px auto;
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+gap:30px;
+
+}
+
+.box{
+
+background:rgba(255,255,255,.55);
+
+backdrop-filter:blur(20px);
+
+padding:35px;
+
+border-radius:28px;
+
+text-align:center;
+
+transition:.35s;
+
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+.box:hover{
+
+transform:translateY(-8px);
+
+}
+
+.icon{
+
+font-size:40px;
+margin-bottom:15px;
+
+}
+
+.box h3{
+
+margin-bottom:12px;
+color:#444;
+
+}
+
+.box p{
+
+color:#666;
+line-height:1.7;
+
+}
+
+footer{
+
+padding:40px;
+text-align:center;
+color:#777;
+
+}
+
+@media(max-width:760px){
+
+.text{
+
+text-align:center;
+
+}
+
+.btns{
+
+justify-content:center;
+
+}
+
+.text h1{
+
+font-size:42px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="circle c1"></div>
+<div class="circle c2"></div>
+<div class="circle c3"></div>
+
+<nav>
+
+<div class="logo">Simplex</div>
+
+<ul>
+
+<li><a href="#">Home</a></li>
+<li><a href="#">Features</a></li>
+<li><a href="#">About</a></li>
+<li><a href="#">Contact</a></li>
+
+</ul>
+
+</nav>
+
+<section class="hero">
+
+<div class="text">
+
+<h1>Build Something <span>Beautiful.</span></h1>
+
+<p>
+A clean, modern and aesthetic landing page with soft gradients,
+glassmorphism, and elegant typography. Perfect for portfolios,
+startups, projects, or personal websites.
+</p>
+
+<div class="btns">
+
+<button class="primary">Get Started</button>
+<button class="secondary">Learn More</button>
+
+</div>
+
+</div>
+
+<div class="card mockup">
+
+<div class="phone">
+
+<div class="screen">
+
+<h2>Simplex</h2>
+
+<p>Minimal • Modern • Elegant</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="features">
+
+<div class="box">
+
+<div class="icon">✨</div>
+
+<h3>Elegant Design</h3>
+
+<p>
+Soft gradients, rounded corners and beautiful spacing create a clean premium appearance.
+</p>
+
+</div>
+
+<div class="box">
+
+<div class="icon">⚡</div>
+
+<h3>Fast</h3>
+
+<p>
+Built using only HTML and CSS for excellent performance and easy customization.
+</p>
+
+</div>
+
+<div class="box">
+
+<div class="icon">💖</div>
+
+<h3>Responsive</h3>
+
+<p>
+Looks great on desktop, tablet and mobile without any additional frameworks.
+</p>
+
+</div>
+
+</section>
+
+<footer>
+
+© 2026 Simplex. Designed with ♡
+
+</footer>
+
+</body>
+</html>
